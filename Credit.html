@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Credit_Card</title>
+    <!-- 웹폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Unica+One&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/Credit.css">
+</head>
+
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+    <div class="depth">
+        <div class="tap">taptap o</div>
+        <div class="arrow">←
+            <!-- 이미지를 따로 모아놓기위해 img폴더 제작 후 ./img/(현재 디렉토리에 있는 하위 디렉토리인 img에 접속하여 이미지 출력) -->
+            <div><img class="ic" src="./img/EMV_Chip.png" alt="emu_chip"></div>
+        </div>
+        <!-- <sup>라는 위첨자를 표시할 수 있는 TAG를 사용 + margin-top에 마이너스 값을 부여하여 사이에 위치하게 함 -->
+        <div class="samLogo"><sup>SAMSUNG CARD</sup></div>
+        <!-- 공백을 나타내는 &(엠퍼센드)nbsp;를 사용하여 숫자 사이 공백생성 -->
+        <div class="numb">0123&nbsp;4567&nbsp;8910&nbsp;1112</div>
+        <div class="mo">MONTH/YEAR</div>
+        <div class="va">
+            <!-- <br>TAG활용하여 줄 바꿈 -->
+            VALID<br>THRU
+            <!-- 위치맞추기위해 위첨자 <sup>TAG 함께사용 -->
+            <div class="da"><sup>10/24</sup></div>
+        </div>
+        <div class="name">
+            <!--위치맞추기위해 위첨자 <sup>TAG 함께사용 -->
+            <sup>SEO&nbsp;JAEGON</sup>
+            <div class="masterc1">
+                <!-- 위 IC chip과 마찬가지로 이미지 정리를 위해 img폴더 제작후 하위 디렉토리에 접속하여 이미지 출력 -->
+                <img class="masterc" src="./img/mastercard.png" alt="mastercard">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

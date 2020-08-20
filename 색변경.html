@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				height: 500px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background-color: #333;
+				}
+			.img {
+				width: 260px;
+				overflow: hidden;
+				cursor: pointer;
+				position: relative;
+				margin: 0 20px;
+				}
+			.img img {
+				width: 100%; }
+			.img::before {
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-size: cover;
+				filter: grayscale(100%);
+				transition: .5s linear;
+				}
+			.img:nth-child(1)::before {
+				background-image: url(https://walli.quosmos.com/files/thumbs/c/6/e/c6e5c2f80bed69798feae447b9ffdc9157c0560a/color15__800_800.jpg);
+				}
+			.img:nth-child(2)::before {
+				background-image: url(https://walli.quosmos.com/files/thumbs/4/3/4/4347c0a1e9e62b48b3692aa0ea5707165f6c0f15/TesselationV__800_800.png);
+				}
+			.img:nth-child(3)::before {
+				background-image: url(https://walli.quosmos.com/files/thumbs/1/6/a/16a8cd641b3e6dca53c3c8d58d62666444ee1660/tessellation6__800_800.jpg);
+				}
+			.img:hover::before {
+				width: 0; }	
+		</style>
+	</head>
+	<body>
+		<div class="img">
+			<img src="https://walli.quosmos.com/files/thumbs/c/6/e/c6e5c2f80bed69798feae447b9ffdc9157c0560a/color15__800_800.jpg"></div>
+		<div class="img">
+			<img src="https://walli.quosmos.com/files/thumbs/4/3/4/4347c0a1e9e62b48b3692aa0ea5707165f6c0f15/TesselationV__800_800.png"></div>
+		<div class="img">
+			<img src="https://walli.quosmos.com/files/thumbs/1/6/a/16a8cd641b3e6dca53c3c8d58d62666444ee1660/tessellation6__800_800.jpg"></div>
+	</body>
+</html>

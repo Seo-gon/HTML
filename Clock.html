@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>시계는 째깍째깍</title>
+    <link rel='stylesheet' href='./css/Clock.css'>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container2">
+            <div id="second">
+                <div style="height: 50%; width: 100%; background-color: gold;"></div>
+            </div>
+            <div id="minute">
+                <div style="height: 50%; width: 100%; background-color: rgb(228, 72, 72)"></div>
+            </div>
+            <div id="clock">
+                <div style="height: 50%; width: 100%; background-color: rgb(228, 72, 72)"></div>
+            </div>
+            <div id="mid">
+                <div
+                    style="height: 100%; width: 100%; background-color: black; border-radius: 50%; position: absolute;">
+                </div>
+            </div>
+            <script>
+
+                for (var i = 0; i <= 60; i++) {
+                    document.write("<div id='nungeum' style='color: gold; transform: rotate(" + (i * 6) + "deg);'>");
+                    if (i == 5) {
+                            document.write("<div id='number';>" + 1 + "</div>");
+                    }
+                    else if (i == 10) {
+                            document.write("<div id='number';>" + 2 + "</div>");
+                    }
+                    else if (i == 15) {
+                            document.write("<div id='number';>" + 3 + "</div>");
+                    }
+                    else if (i == 20) {
+                            document.write("<div id='number';>" + 4 + "</div>");
+                    }
+                    else if (i == 25) {
+                            document.write("<div id='number';>" + 5 + "</div>");
+                    }
+                    else if (i == 30) {
+                            document.write("<div id='number';>" + 6 + "</div>");
+                    }
+                    else if (i == 35) {
+                            document.write("<div id='number';>" + 7 + "</div>");
+                    }
+                    else if (i == 40) {
+                            document.write("<div id='number';>" + 8 + "</div>");
+                    }
+                    else if (i == 45) {
+                            document.write("<div id='number';>" + 9 + "</div>");
+                    }
+                    else if (i == 50) {
+                            document.write("<div id='number';>" + 10 + "</div>");
+                    }
+                    else if (i == 55) {
+                            document.write("<div id='number';>" + 11 + "</div>");
+                    }
+                    else if (i == 0 || i == 60) {
+                            document.write("<div id='number';>" + 12 + "</div>");
+                    }
+                    else {
+                        document.write("<div style='height: 4%; width:100%; background-color: white;'></div>");
+                    }
+                    document.write("</div>");
+                }
+            </script>
+        </div>
+    </div>
+</body>
+<script>
+    function secondAction() {
+        let time = new Date();
+        let seconds = time.getSeconds();
+        seconds *= 6;
+        document.getElementById("second").style.transform = "rotate(" + seconds + "deg)";
+        // document.write(seconds);
+        setTimeout(secondAction, 1000);
+    }
+    secondAction();
+
+    function minuteAction() {
+        let today = new Date();
+        let minutes = today.getMinutes();
+        minutes *= 6;
+        document.getElementById("minute").style.transform = "rotate(" + minutes + "deg)";
+        setTimeout(minuteAction, 60000);
+    }
+    minuteAction();
+
+    function clockAction() {
+        let tnow = new Date();
+        let times = tnow.getHours();
+        times *= 30;
+        document.getElementById("clock").style.transform = "rotate(" + times + "deg)";
+        setTimeout(clockAction, 3600000);
+    }
+    clockAction();
+</script>
+
+</html>

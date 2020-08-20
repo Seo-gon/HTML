@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/Calculator.css">
+    <script>
+        var operator = '';
+        var result = 0;
+        var newNum = 0;
+        var oldNum = 0;
+        var num = 0;
+
+        //BackSpace와 홈버튼 구현X
+        // C BUTTON
+        function clearAll() {
+            result = 0;         //result값 0으로 초기화
+            newNum = 0;         //newNum값 0으로 초기화
+            oldNum = 0;         //oldNum값 0으로 초기화
+            num = 0;
+            
+            document.getElementById("resultBox").innerText = result;    //resultBox에 0으로 초기화된 result값을 입력
+            document.getElementById("inputBox").innerText = "";          //inputBox의 Text값을 ""으로 초기화(?)
+        }
+        // data_num(숫자버튼 + . 버튼 클릭시)
+        function data_num(clickButton) {
+            if (clickButton == ".") {                                                       //clickButton의 값이 "."일 때
+                if (document.getElementById("inputBox").innerText == 0) {                   //inputBox에 Text값이 0일 때
+                    document.getElementById("inputBox").innerText += "0" + clickButton;     //"0."모양으로 inputBox에 입력
+                }
+                else {                                                                      //해당사항 없을 시
+                    document.getElementById("inputBox").innerText += clickButton;           //"."만 입력
+                }
+            }
+            else {                                                                          //clickButton값이 숫자일 때
+                document.getElementById("inputBox").innerText += clickButton;               //clickButton값이 inputBox에 입력
+            }
+            newNum = parseFloat(document.getElementById("inputBox").innerText);             //innerText값을 수치화 하여 newNum에 저장                                                                //newNum값 반환
+        }
+        // Operator
+        // function operationAction(clickOperator) {
+        //     operator = clickOperator;                                                       //clickOperator값을 변수 operator에 대입
+        //     switch (operator) {
+        //         case '+':
+        //             // document.getElementById("inputBox").innerText += "+";                   //inputBox의 Text값에 + "+"를 한다. 아래에서 ""로 초기화시켜 작동X
+        //             oldNum += newNum;                                                       //oldNum과 연산자 입력후 새로 입력된 newNum을 더한다.
+        //             result = oldNum;                                                        //oldNum = oldNum + newNum의 값을 result에 대입     
+        //             break;
+        //         case '-':
+        //             // document.getElementById("inputBox").innerText += "-";                   //inputBox의 Text값에 + "-"를 한다. 아래에서 ""로 초기화시켜 작동X
+        //             oldNum = newNum;                //1회용 계산법..oldNum이 0이기때문에 9를 입력하면 0-9가 되어버림 오류발생되서 newNum을 oldNum으로 옮김
+        //             newNum = 0;                     //아래에서 newNum의 값도 여전히 9이기때문에 9-9로 계산된다. 때문에 newNum을 0으로 변경
+        //             oldNum -= newNum;
+        //             result = oldNum;                                                        //oldNum = oldNum - newNum의 값을 result에 대입 
+        //             break;
+        //         case 'x':
+        //             // document.getElementById("inputBox").innerText += "*";                   //inputBox의 Text값에 + "x"를 한다. 아래에서 ""로 초기화시켜 작동X
+        //             oldNum = newNum;                //1회용 계산법..oldNum이 0이기때문에 9를 입력하면 0*9가 되어버림 오류발생되서 newNum을 oldNum으로 옮김
+        //             newNum = 1;                     //-와 같은 맥락으로 첫숫자 입력시 9*1의값을 나타내기위해..
+        //             oldNum *= newNum;
+        //             result = oldNum;                                                        //oldNum = oldNum * newNum의 값을 result에 대입  
+        //             break;
+        //         case '÷':
+        //             // document.getElementById("inputBox").innerText += "÷";                   //inputBox의 Text값에 + "÷"를 한다. 아래에서 ""로 초기화시켜 작동X
+        //             oldNum = newNum;                //1회용 계산법..oldNum이 0이기때문에 9를 입력하면 0/9가 되어버림 오류발생되서 newNum을 oldNum으로 옮김
+        //             newNum = 1;                     //여기도 이전과 같은 맥락이다..
+        //             oldNum /= newNum;
+        //             result = oldNum;                                                        //oldNum = oldNum / newNum의 값을 result에 대입    
+        //             break;
+        //         case '%':
+        //             // document.getElementById("inputBox").innerText += "%";                   //inputBox의 Text값에 + "%"를 한다.
+        //             newNum /= 100;
+        //         default:
+        //             document.getElementById("inputBox").innerText = "Error";
+        //     }
+        //     oldNum = newNum;                                                                //newNum에 저장된 값을 oldNum에 저장
+        //     document.getElementById("inputBox").innerText = "";                             // += "+"부분 일단 주석화한 이유 이거 없으면 값 이상해짐...왜일까..;
+        // }
+        function operationAction(clickOperator) {
+            operator = clickOperator;                                                       //clickOperator값을 변수 operator에 대입
+            switch (operator) {
+                case '+':
+                    // document.getElementById("inputBox").innerText += "+";                  
+                    result += newNum
+                    break;
+                case '-':
+                    // document.getElementById("inputBox").innerText += "-";                   //inputBox의 Text값에 + "-"를 한다. 아래에서 ""로 초기화시켜 작동X
+                    result -= newNum
+                    break;
+                case 'x':
+                    // document.getElementById("inputBox").innerText += "*";                   //inputBox의 Text값에 + "x"를 한다. 아래에서 ""로 초기화시켜 작동X
+                    result = 1;
+                    result *= newNum
+                    break;
+                case '÷':
+                    // document.getElementById("inputBox").innerText += "÷";                   //inputBox의 Text값에 + "÷"를 한다. 아래에서 ""로 초기화시켜 작동X
+                    oldNum = newNum
+                    result /= newNum
+                    break;
+                case '%':
+                    // document.getElementById("inputBox").innerText += "%";                   //inputBox의 Text값에 + "%"를 한다.
+                    newNum /= 100;
+                default:
+                    document.getElementById("inputBox").innerText = "Error";
+            }
+            oldNum = newNum;                                                                //newNum에 저장된 값을 oldNum에 저장
+            document.getElementById("inputBox").innerText = "";                             // += "+"부분 일단 주석화한 이유 이거 없으면 값 이상해짐...
+        }
+        //Equal button
+        function equal() {
+            switch (operator) {
+                case '+':
+                    result += newNum;
+                    break;
+                case '-':
+                    result -= newNum;
+                    break;
+                case 'x':
+                    result *= newNum;
+                    break;
+                case '÷':
+                    result /= newNum;
+                    break;
+                case '%':
+                    result = newNum;
+                default:
+                    result = newNum;
+            }
+            document.getElementById("resultBox").innerText = result;                        //result값을 받아와서 resultBox에 텍스트로 대입
+            document.getElementById("inputBox").innerText = "";                             //result값을 받아와서 inputBox에 텍스트로 대입
+        }
+    </script>
+</head>
+
+<body class="body" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+    <div class="h1">Gon's Calculator</div>
+    <p class="dev">CREATED BY JAEGON</p>
+    <div class="phone">
+        <div class="here"></div>
+        <div class="totalc">
+            <div>
+                <div id="inputBox" value=""></div>
+                <div id="resultBox">0</div>
+                <div class="container">
+                    <button class="fir" onclick="clearAll()">C</button>&nbsp;
+                    <button class="fir" onclick="del()">←</button>&nbsp;
+                    <button class="fir" onclick="operationAction('%')">%</button>&nbsp;
+                    <button class="divi" onclick="operationAction('÷')">÷</button>
+                </div>
+                <div class="container">
+                    <button class="num" onclick="data_num(7)">7</button>&nbsp;
+                    <button class="num" onclick="data_num(8)">8</button>&nbsp;
+                    <button class="num" onclick="data_num(9)">9</button>&nbsp;
+                    <button class="divi" onclick="operationAction('x')">x</button>
+                </div>
+                <div class="container">
+                    <button class="num" onclick="data_num(4)">4</button>&nbsp;
+                    <button class="num" onclick="data_num(5)">5</button>&nbsp;
+                    <button class="num" onclick="data_num(6)">6</button>&nbsp;
+                    <button class="divi" onclick="operationAction('-')">-</button>
+                </div>
+                <div class="container">
+                    <button class="num" onclick="data_num(1)">1</button>&nbsp;
+                    <button class="num" onclick="data_num(2)">2</button>&nbsp;
+                    <button class="num" onclick="data_num(3)">3</button>&nbsp;
+                    <button class="divi" onclick="operationAction('+')">+</button>
+                </div>
+                <div class="container">
+                    <button class="num0" onclick="data_num(0)">0</button>&nbsp;
+                    <button class="num" onclick="data_num('.')">.</button>&nbsp;
+                    <button class="divi" onclick="equal()">=</button>
+                </div>
+            </div>
+
+        </div>
+        <div>
+            <button class="home" onclick="home"></button>
+        </div>
+    </div>
+</body>
+
+</html>
